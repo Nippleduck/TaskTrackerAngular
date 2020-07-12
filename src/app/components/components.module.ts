@@ -17,6 +17,9 @@ import { TaskViewComponent } from './manager-page/task-view/task-view.component'
 import { ProjectViewComponent } from './manager-page/project-view/project-view.component';
 import { UserViewComponent } from './manager-page/user-view/user-view.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { InvitationDialogComponent } from './popup-dialogs/invitation-dialog/invitation-dialog.component';
+import { CreateProjectDialogComponent } from './popup-dialogs/create-project-dialog/create-project-dialog.component';
+import { CreateTaskDialogComponent } from './popup-dialogs/create-task-dialog/create-task-dialog.component';
 
 const taskRoutes: Routes =
 [
@@ -54,7 +57,10 @@ const managerPageComponents =
       AddTaskComponent,
       NavBarComponent,
       ProjectElementComponent,
-      ...managerPageComponents
+      ...managerPageComponents,
+      InvitationDialogComponent,
+      CreateProjectDialogComponent,
+      CreateTaskDialogComponent
     ],
   exports: [
       MainPageComponent,

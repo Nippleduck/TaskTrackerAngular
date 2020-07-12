@@ -13,7 +13,17 @@
            <app-project-view *ngFor="let str of strings |filter: searchedProject" [project] = "str"></app-project-view>
         </div>
         <div class="button-container">
-            <button class="create-project">Create Project</button>
+            <button class="create-project">
+                <details class="details-overlay details-overlay-dark details-reset">
+                <summary>Create Project</summary>
+                <div class="details-dialog anim-fade-in fast Box Box--overlay">
+                    <div style="text-decoration: none;">
+                        <p>Hello!</p>
+                        <input type="text">
+                    </div>
+                </div>
+                </details>
+            </button>
         </div>
     </div>
     <div class="grid-info">
@@ -39,7 +49,12 @@
         <div class="team-header">
             <h1 class="team-title">Team</h1>
             <div class="invite-button-container">
-                <button class="invite-button">Invite</button>
+                <details class="details-overlay details-overlay-dark details-reset">
+                    <summary class="invite-button">Invite</summary>
+                    <div class="details-dialog anim-fade-in fast Box Box--overlay">
+                        <app-invitation-dialog></app-invitation-dialog>
+                    </div>
+                    </details>
             </div>
         </div>
         <div class="manager-container">
