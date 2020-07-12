@@ -1,0 +1,307 @@
+//first
+$gray_black: #303841;
+//second
+$light_prism: #00adb5;
+//third
+$gray_white: #eeeeee;
+//fourth
+$orange: #ff5722;
+//primary text
+$dark: #212121;
+//secondary text
+$grey: #757575;
+//divider color
+$light_grey: #bdbdbd;
+
+$light: #f8f8f8;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+
+//github box shape example
+.box{
+    background-color: #fff;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+}
+
+.panel-title{
+    margin-top: 10px;
+}
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+body, html{
+    height: 100vh;
+    //background-image: url('../../../assets/images/task_back.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: white;
+
+    font-family: 'Montserrat', sans-serif;
+}
+.grid-wrapper{
+    margin: 0;
+    display: grid;
+    grid-template-columns: 20% auto 20%;
+    grid-template-rows: 21.5% auto;
+    grid-template-areas: 
+        "sidebar description performers"
+        "sidebar main performers";
+}
+
+@media only screen and (max-width: 768px){
+    .grid-wrapper{
+        margin: 0;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 29.5% auto;
+        grid-template-areas: 
+            "description"
+            "main";
+        //gap: 5px;
+    }
+    .grid-sidebar{
+        display: none;
+    }
+    .performers{
+        display: none;
+    }
+}
+
+.performers{
+    grid-area: performers;
+    background-color: white;
+    //margin: 5px;
+    justify-items: center;
+    justify-content: center;
+    height: 610px;
+
+    border-left: 1px solid #e1e4e8!important;
+}
+
+.grid-sidebar{
+    grid-area: sidebar;
+    background-color: white;
+    //margin: 5px;
+    justify-items: center;
+    justify-content: center;
+    height: 610px; //need it to fix the page size
+    //margin: 5px;
+
+    border-right: 1px solid #e1e4e8!important;
+}
+
+.grid-action-bar{
+    grid-area: actionbar;
+    background-color: #fafbfc!important;
+}
+
+.grid-desc{
+    grid-area: description;
+    background-color: #fafbfc!important;
+    //margin: 5px;
+
+    border-bottom: 1px solid #e1e4e8!important;
+}
+
+.grid-main{
+    background-color: white;
+    grid-area: main;
+    //margin: 5px;
+    height: 396px;
+
+    //max-height: 500px;
+    
+}
+
+.description{
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+.description-text{
+    font-size: 1.5rem;
+    //font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #586069 !important;
+}
+
+.info-container{
+    height: 42px;
+    vertical-align: text-bottom;
+    border-top: 1px solid #e1e4e8!important;
+}
+
+.flex-info-container{
+    display: flex;
+    margin: 5px;
+}
+
+.infos{
+    flex: auto;
+    margin-right: 16px !important;
+    //margin-left: 10px!important;
+    min-width: 0% !important;
+    max-width: 100% !important;
+}
+
+.task-count{
+    display: flex;
+    float: none;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.count-icon{
+    vertical-align: text-bottom;
+    opacity: 0.7;
+}
+
+.count-text{
+    font-size: 16px;
+    //font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    opacity: 0.7;
+}
+
+.option-icon{
+    width: 32px; height: 32px;
+    cursor: pointer;
+}
+
+
+.btn {
+    position: relative;
+    display: inline-block;
+    padding: 5px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+}
+
+.btn:hover{
+    background-color: #e2e7ec;
+}
+
+.btn:active{
+    background-color: #a2a4a5;
+}
+
+.project-header{
+    display: flex;
+    margin-top:20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.project-title{
+    flex: auto;
+    margin-right: 16px!important;
+    min-width: 0%!important;
+    max-width: 100%!important;
+}
+
+.title-header{
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
+    float: none;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.project-text{
+    margin-left: 10px;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif!important;
+    //font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.project-icon{
+    vertical-align: text-bottom;
+}
+
+.project-status{
+    margin-right: 20px;
+}
+
+.status{
+    color: white;
+}
+
+.status-container{
+    background-color: green;
+}
+
+mat-expansion-panel{
+    max-height: 400px;
+    overflow: auto;
+}
+
+.project-list-header{
+    text-align: center;
+    margin: 10px;
+    border-bottom: 1px solid #e1e4e8!important;
+}
+
+.project-button-wrapper{
+    margin: 10px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.add-project-button{
+    width: 200px;
+}
+
+.project-list{
+    margin: 5px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.task-list{
+    margin: 10px;
+
+    max-height: 394px;
+    overflow: auto;
+}
+
+
+//hide text overflow
+.truncate{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1em;
+}
+
+//common wrapper
+.info-wrapper{
+    padding: 5px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+}

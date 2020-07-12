@@ -1,0 +1,142 @@
+  .site-header{
+    background-color: #323643;
+    color: white;
+
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+  }
+
+  .header-items{
+    width: 100%;
+  }
+
+  .site-title{
+    font-size: 1.5em;
+    margin-left: 0.3em;
+    width: 95%;
+  }
+
+  @media only screen and (max-width: 768px){
+    .site-title{
+      width: 90%;
+    }
+  }
+
+  .site-logo{
+    width: 30px;
+    height: 30px;
+  }
+
+  .details-overlay{
+    display: block;
+    margin-right: 0.3em;
+    position: relative!important;
+  }
+
+  .nav-user-avatar{
+    width: 30px;
+    height: 30px;
+    cursor: pointer; 
+  }
+
+  .header-link{
+    display: list-item;
+  }
+
+  .dropdown{
+    color: black;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: auto;
+    z-index: 100;
+    width: 160px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-top: 2px;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(149,157,165,.2);
+  }
+
+
+  .details-reset summary::before{
+      display: none;
+  }
+
+  .details-reset>summary{
+    list-style: none;
+  }
+
+  .details-overlay[open]>summary::before {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 80;
+    display: block;
+    cursor: default;
+    content: " ";
+    background: transparent;
+}
+
+
+
+  details summary::-webkit-details-marker {
+    display:none;
+  }
+
+  details summary:focus{
+    outline: none;
+  }
+
+  .user-profile-link{
+    margin-left: 0;
+  }
+
+  .dropdown-divider{
+    display: block;
+    height: 0;
+    margin: 8px 0;
+    border-top: 1px solid #e1e4e8;
+  }
+
+  .dropdown-header{
+    padding: 0.3em 0.3em 0.1em 0.3em;
+  }
+
+  .user-status-container{
+    margin: 0.3em 0.5em;
+    padding: 0 0.3em 0.1em 0.3em;
+    text-align: center;
+    border: 0.06em solid #e1e4e8!important;
+    border-radius: 0.6em;
+    //background-color: rgb(99, 44, 104);
+  }
+
+  .user-status{
+    //color: #24292e;
+    color: rgb(99, 44, 104);
+  }
+
+  .dropdown-item{
+    cursor: pointer;
+    padding-left: 0.3em;
+    color: #6c757d;
+    font-size: 0.85em;
+  }
+
+  .dropdown-item:active{
+    color: white;
+  }
+
+  details:not([open])>:not(summary) {
+    display: none!important;
+  }
+
+ 

@@ -1,0 +1,52 @@
+<div class="grid-wrapper">
+    <div class="grid-sidebar">
+        <div class="sidebar-header">
+            <h1 class="list-header">Projects
+                <span class="projects-count">{{strings.length}}</span>
+            </h1>
+        </div>
+        <div class="project-search-container">
+            <input class="project-input" type="text" [(ngModel)]="searchedProject" placeholder="Write project title...">
+            <img class="search-image" src="../../../../assets/images/search--v1.png">
+        </div>
+        <div class="projects-list">
+           <app-project-view *ngFor="let str of strings |filter: searchedProject" [project] = "str"></app-project-view>
+        </div>
+        <div class="button-container">
+            <button class="create-project">Create Project</button>
+        </div>
+    </div>
+    <div class="grid-info">
+        <div class="info-header">
+            <h2 class="info-title"> Task manager API</h2>
+        </div>
+        <div class="description">
+            <p class="description-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia, dicta.</p>
+        </div>
+    </div>
+    <div class="grid-main">
+        <div class="tools-container">
+            <div class="task-button-container">
+                <input class="task-input" type="text" [(ngModel)]="searchedTask" placeholder="Write task title...">
+            </div>
+            <button class="create-task">New Task</button>
+        </div>
+        <div class="tasks-container">
+            <app-task-view *ngFor="let str of strings |filter: searchedTask" [task]="str"></app-task-view>
+        </div>    
+    </div>
+    <div class="grid-team">
+        <div class="team-header">
+            <h1 class="team-title">Team</h1>
+            <div class="invite-button-container">
+                <button class="invite-button">Invite</button>
+            </div>
+        </div>
+        <div class="manager-container">
+            <app-user-view></app-user-view>
+        </div>
+        <div class="performers-list">
+            <app-user-view *ngFor="let str of strings"></app-user-view>
+        </div>
+    </div>
+</div>

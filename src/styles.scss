@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+body{
+  background-image: url(./assets/images/task_back.jpg);
+  width: auto;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40.8em;
+}
+*/
+//scrollbar styling
+
+::-webkit-scrollbar {
+    width: 3px;
+    //display: none;
+  }
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #e09729;
+  }
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #cc800e;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+html, body { height: 100%; }
+body {
+   margin: 0;
+   font-family: unset;
+   font-family: 'Quicksand', sans-serif!important;}

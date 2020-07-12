@@ -1,0 +1,47 @@
+//  COMPONENTS STYLING
+
+.user-view-container{
+    margin: 0.5em;
+    margin-bottom: 1em;
+    display: flex;
+}
+
+.user-view-container:hover{
+    background-color: #dbd9d5;
+    border-radius: 0.3em;
+    cursor: pointer;
+}
+
+.username{
+    margin: 0;
+    margin-left: 0.3em;
+    width: 100%;
+}
+
+.avatar-container{
+    height: 15%;
+    width: 15%;
+    padding: 0.3em;
+}
+
+.user-info-container{
+    margin-left: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+.user-avatar{
+    height: 24px;
+    width: 24px;
+}
+
+.user-position{
+    font-size: 0.8em;
+    padding: 0.2em;
+    //border: 0.06em solid #e1e4e8;
+    margin-left: 0.3em;
+    width: 10%;
+    text-align: center;
+
+    background-color: #2c365d;
+    color: white;
+}

@@ -1,0 +1,44 @@
+.tab-button
+{
+    font-weight:bold;
+    margin-right: 10px; 
+    margin-left: 10px; 
+    border: none;
+    border-bottom: 2.5px solid transparent; 
+    background-color: transparent;
+    font-size: 18px;
+    color: $main-background-color;
+    width: 160px;
+    height: 50px;
+    outline: none;
+}
+
+.tab-button:hover
+{
+    font-size: 17px;
+    font-weight:bold;
+    border-bottom: 2.5px solid $main-background-color; 
+}
+
+.tab-button-selected
+{
+    font-weight:bold;
+    margin-right: 10px; 
+    margin-left: 10px;
+    border: none;
+    border-bottom: 3px solid $elements-color; 
+    background-color: transparent;
+    font-size: 18px;
+    color: $main-background-color;
+    width: 160px;
+    height: 50px;
+    outline: none;
+}
+
+.tab-container
+{
+    margin: 30px; 
+    display: flex;
+    border-bottom: 0.1px solid $main-background-color; 
+    
+}

@@ -1,0 +1,382 @@
+// <--NAVIGATION--> // 
+// = = = = = = = = = = = =
+// - IMPORTS             =
+// - GENERAL STYLING     =
+// - SHARED STYLING      =
+// - PAGE GRID MARKUP    =
+// - COMPONENTS STYLING  =
+// - - grid-sidebar      =
+// - - grid-description  =
+// - - grid-main         =
+// - - grid-team         =
+// = = = = = = = = = = = =
+
+//   IMPORTS           
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+
+//   GENERAL STYLING   
+
+body{
+    margin: 0;
+    
+    font-size: 16px;
+    //font-family: 'Quicksand', sans-serif!important;
+    //font-family: 'Poppins', sans-serif!important;
+    font-family: 'Source Sans Pro', sans-serif!important;
+
+    //background-color: #bde4f4;
+    //background-color: #fde9c9;
+    background-color: #326765;
+    //background-image: url(../../../../assets/images/task_back.jpg);
+    background-position: 20% 80%;
+    background-size: cover;
+}
+
+//   SHARED STYLING     
+
+.box{
+    background-color: #fff;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+}
+
+.truncate{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+//   PAGE GRID MARKUP   
+
+.grid-wrapper{
+    margin: 0;
+    display: grid;
+    grid-template-columns: 18em auto 20%;
+    grid-template-rows: 21.5% auto;
+    grid-template-areas: 
+        "sidebar info team"
+        "sidebar main team";
+}
+
+@media only screen and (max-width: 768px){
+
+    .grid-wrapper{
+        margin: 0;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: 21.5% auto;
+        grid-template-areas: 
+            "info"
+            "main";
+    }
+
+    .grid-team{
+        display: none;
+    }
+
+    .grid-sidebar{
+        display: none;
+    }
+
+    .create-task{
+        width: 20%;
+    }
+}
+
+.grid-team{
+    grid-area: team;
+    background-color: rgb(255, 255, 255);
+
+    //border-left: 1px solid #e1e4e8!important;
+
+    margin: .3em;
+    margin-left: 0;
+    border-radius: .3em;
+}
+
+.grid-sidebar{
+    grid-area: sidebar;
+    background-color: white;
+
+    border-right: 1px solid #e1e4e8!important;
+
+    margin: .3em;
+    margin-right: 0;
+    border-radius: .3em;
+}
+
+.grid-info{
+    grid-area: info;
+    background-color: white!important;
+
+    //border-bottom: 1px solid #e1e4e8!important;
+
+    margin: .3em .3em 0 .3em;
+    border-radius: .3em;
+    
+    height: 6em;
+    max-height: 6em;
+}
+
+.grid-main{
+    background-color: white;
+    grid-area: main;
+
+    min-height: 22em;
+    height: 20em;
+
+    margin: .3em;
+    border-radius: .3em;
+}
+
+//   COMPONENTS STYLING
+
+// Grid-sidebar
+//- - - - - - - - - - - - - - - - - - - 
+.list-header{
+    font-size: 1.7em;
+    margin: .3em;
+    padding: .2em 0;
+    font-weight: bold;
+}
+
+.projects-count{
+    border: .1em solid grey;
+    border-radius: 1em;
+    font-size: .35em;
+    padding: .3em;
+    padding-left: .4em;
+    padding-right: .5em;
+    vertical-align: middle;
+    font-weight: normal;
+}
+
+.projects-list{
+    margin: .3em;
+    margin-top: 1em;
+    padding: .2em;
+
+    max-height: 18em;
+    overflow: auto;
+
+    border: 0.06em solid #e1e4e8;
+}
+
+.button-container{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.create-project{
+    background-color: initial;
+    border: 0.09em solid;
+    border-radius: 0.6em;
+    padding: 0.3em;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.create-project:hover{
+    border: 0.09em solid #cc800e;
+    color: #cc800e;
+}
+
+.create-project:focus{
+    outline: none;
+}
+
+.create-project:active{
+    background-color: rgb(228, 208, 200);
+}
+
+.project-search-container{
+    margin: 0.3em;
+    margin-left: 1em;
+    display: flex;
+}
+
+.project-input{
+    font-family: 'Fira Mono', monospace;
+    font-size: 0.85em;
+    padding: 0.4em;
+    text-align: center;
+    border: 0.06em solid #e1e4e8;
+    border-radius: 0.6em;
+
+    overflow: hidden;
+}
+
+.project-input:focus{
+    outline: none;
+
+    border: 0.06em solid #cc800e;
+}
+
+.search-image{
+    width: 20px;
+    height: 20px;
+    margin-top: 0.3em;
+    margin-left: 0.3em;
+    opacity: 0.5;
+}
+// - - - - - - - - - - - - - - - - - 
+
+// Grid-info
+// - - - - - - - - - - - - - - - - - 
+
+.info-header{
+    margin: 0.3em 0.3em 0 0.3em;
+    padding: 0.2em;
+}
+
+.info-title{
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+.description{
+    margin: 0 0.3em 0.3em 0.3em;
+    padding: 0.2em;
+}
+
+.description-text{
+    opacity: 0.7;
+}
+
+// - - - - - - - - - - - - - - - - -
+
+// Grid-main
+// - - - - - - - - - - - - - - - - - 
+
+.tasks-container{
+    margin: 0.5em;
+    margin-top: 1.2em;
+    padding: 0.3em;
+
+    border: 0.07em solid #e1e4e8;
+
+    max-height: 14.1em;
+    overflow: auto;
+}
+
+.tools-container{
+    display: flex;
+    margin: 0.5em;
+}
+
+.task-input{
+    font-family: 'Fira Mono', monospace;
+    font-size: 0.85em;
+    padding: 0.4em;
+    text-align: center;
+    border: 0.06em solid #e1e4e8;
+    border-radius: 0.6em;
+
+    overflow: hidden;
+}
+
+.task-input:focus{
+    outline: none;
+
+    border: 0.06em solid #cc800e;
+}
+
+.create-task{
+    background-color: initial;
+    border: 0.07em solid #e1e4e8;
+    border-radius: 0.6em;
+    padding: 0.4em;
+    font-size: 0.9em;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.task-button-container{
+    width: 89%!important;
+}
+
+.create-task:hover{
+    border: 0.07em solid #cc800e;
+    color: #cc800e;
+}
+
+.create-task:active{
+    background-color: rgb(228, 208, 200);
+}
+
+.create-task:focus{
+    outline: none;
+}
+
+// - - - - - - - - - - - - - - - - - 
+
+// Grid-team
+// - - - - - - - - - - - - - - - - - 
+
+.team-header{
+    display: flex;
+    align-items: center;
+}
+
+.team-title{
+    font-size: 1.7em;
+    margin: .3em;
+    padding: .2em 0;
+    font-weight: bold;
+}
+
+.manager-container{
+    margin: 0.3em;
+    margin-top: 1em;
+    padding: .2em;
+
+    border: 0.06em solid #e1e4e8;
+    border-radius: 0.6em;
+}
+
+.performers-list{
+    margin: 0.3em;
+    margin-top: 1em;
+    padding: .2em;
+
+    max-height: 15em;
+    overflow: auto;
+
+    border: 0.06em solid #e1e4e8;
+}
+
+.invite-button-container{
+    margin: .3em;
+    text-align: center;
+}
+
+.invite-button{
+    background-color: initial;
+    border: 0.07em solid #e1e4e8;
+    border-radius: 0.6em;
+    padding: 0.3em;
+    font-size: 0.8em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.invite-button:hover{
+    border: 0.07em solid #cc800e;
+    color: #cc800e;
+}
+
+.invite-button:focus{
+    outline: none;
+}
+
+.invite-button:active{
+    background-color: rgb(228, 208, 200);
+}
+// - - - - - - - - - - - - - - - - - 

@@ -1,0 +1,64 @@
+// SHARED STYLING
+
+.truncate{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+//  COMPONENTS STYLING
+
+.task-view-container{
+    border-bottom: 0.06em solid #e1e4e8;
+    padding: 0.3em;
+}
+
+.task-view-container:hover{
+    background-color: #dbd9d5;
+    border-radius: 0.1em;
+    cursor: pointer;
+
+    .deadline{
+        border: 0.06em solid;
+    }
+}
+
+.task-info-container{
+    display: flex;
+    margin-left: 0.3em;
+}
+
+.task-title{
+    font-weight: bold;
+    margin: 0;
+    flex: auto;
+    width: 30%;
+    margin-right: 0.5em;
+}
+
+.avatar-wrapper{
+    flex: auto;
+    margin-right: 0.5em;
+    width: 10%;
+}
+
+.executor-avatar{
+    flex: auto;
+    width: 20px;
+    height: 20px;
+}
+
+.deadline{
+    font-size: 0.8em;
+    padding: 0.2em;
+    border: 0.06em solid #e1e4e8;
+    margin-right: 0.5em;
+    width: 10%;
+    text-align: center;
+}
+
+.task-description{
+    margin: 0;
+    width: 50%;
+    opacity: 0.8;
+}
