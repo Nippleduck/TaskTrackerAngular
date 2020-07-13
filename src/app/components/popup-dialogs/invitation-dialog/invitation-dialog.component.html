@@ -1,11 +1,16 @@
 <div class="invitation-container">
     <div class="invitation-header">
         <h3 class="invitation-title">Invite people to the team</h3>
+        <p class="invitation-description">You may search for people you want to add to your project. Exclamation mark near the user shows that he is occupied on a different project.</p>
     </div>
     <div class="user-search-container">
-        <input type="text" class="user-input" placeholder="Type user name...">
+        <input type="text" class="user-input" [(ngModel)]="searchedPerson" placeholder="Type user name...">
     </div>
     <div class="invitation-user-list">
-        
+        <div class="invitation-user" *ngFor="let name of names |filter: searchedPerson">
+            <img src="../../../../assets/images/default-user.png" class="invitation-user-avatar">
+            <p class="invitation-username">{{name.name}}</p>
+            <img src="../../../../assets/images/plus.png" class="dialog-invite-button">
+        </div>
     </div>    
 </div>

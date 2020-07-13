@@ -11,6 +11,11 @@
     font-size: 1.2em;
 }
 
+.invitation-description{
+    font-size: 0.8em;
+    color: #6c757d;
+}
+
 .user-search-container{
     padding: 0.5em;
 }
@@ -29,4 +34,47 @@
     border-radius: 6px;
     outline: none;
     box-shadow: inset 0 1px 0 rgba(225,228,232,.2);
+}
+
+.invitation-user-list{
+    margin: 0.5em;
+    padding: 0.3em 0.5em;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+
+    max-height: 11.5em;
+    overflow: auto;
+}
+
+.invitation-user{
+    display: flex;
+    margin: 0.3em;
+    text-align: start;
+}
+
+.invitation-user-avatar{
+    width: 20px;
+    height: 20px;
+    vertical-align: text-bottom;
+}
+
+.invitation-username{
+    margin: 0;
+    margin-left: 0.4em;
+    font-size: 0.85em;
+    opacity: 0.8;
+    width: 90%;
+}
+
+.dialog-invite-button{
+    width: 12px;
+    height: 12px;
+    opacity: 0.6;
+    vertical-align: text-bottom;
+    cursor: pointer;
+}
+
+.dialog-invite-button:active{
+    border-radius: 50%;
+    background-color: rgb(202, 199, 199);
 }

@@ -7,6 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvitationDialogComponent implements OnInit {
 
+  searchedPerson;
+
+  names: any[] = [
+    {name:"Pablo"},
+     {name: "Silvia"},
+     {name: "Arnold"},
+      {name: "Patricia Madrero"},
+       {name: "Axcel D`Tolli"},
+        {name: "Mike Sanders"},
+        {name: "Mike Sanders"},
+        {name: "Mike Sanders"},
+        {name: "Mike Sanders"},
+        {name: "Mike Sanders"},
+        {name: "Mike Sanders"},
+        {name: "Mike Sanders"},
+        {name: "Mike Sanders"}
+  ]
   constructor() { }
 
   ngOnInit(): void {

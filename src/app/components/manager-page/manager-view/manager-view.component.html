@@ -13,17 +13,12 @@
            <app-project-view *ngFor="let str of strings |filter: searchedProject" [project] = "str"></app-project-view>
         </div>
         <div class="button-container">
-            <button class="create-project">
-                <details class="details-overlay details-overlay-dark details-reset">
-                <summary>Create Project</summary>
+            <details class="details-overlay details-overlay-dark details-reset">
+                <summary class="create-project">Create Project</summary>
                 <div class="details-dialog anim-fade-in fast Box Box--overlay">
-                    <div style="text-decoration: none;">
-                        <p>Hello!</p>
-                        <input type="text">
-                    </div>
+                    <app-create-project-dialog></app-create-project-dialog>
                 </div>
                 </details>
-            </button>
         </div>
     </div>
     <div class="grid-info">
@@ -39,7 +34,12 @@
             <div class="task-button-container">
                 <input class="task-input" type="text" [(ngModel)]="searchedTask" placeholder="Write task title...">
             </div>
-            <button class="create-task">New Task</button>
+            <details class="details-overlay details-overlay-dark details-reset">
+                <summary class="create-task">New Task</summary>
+                <div class="details-dialog anim-fade-in fast Box Box--overlay">
+                    <app-create-task-dialog></app-create-task-dialog>
+                </div>
+                </details>
         </div>
         <div class="tasks-container">
             <app-task-view *ngFor="let str of strings |filter: searchedTask" [task]="str"></app-task-view>

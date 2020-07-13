@@ -1,0 +1,65 @@
+.task-creation-header{
+    text-align: start;
+    padding: 0.5em;
+    background-color: #f6f8fa;
+    border: 0.06em solid #e1e4e8;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.task-creation-title{
+    font-size: 1.2em;
+}
+
+.task-creation-description{
+    font-size: 0.8em;
+    color: #6c757d;
+}
+
+.task-creation-form{
+    text-align: start;
+}
+
+.task-creation-input-container{
+    padding: 0.5em;
+}
+
+.task-creation-input-header{
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.task-creation-input{
+    width: 100%;
+    font-size: 0.9em;
+    padding: 0.3em 0.5em;
+    line-height: 20px;
+    color: #24292e;
+    vertical-align: middle;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    outline: none;
+    box-shadow: inset 0 1px 0 rgba(225,228,232,.2);
+}
+
+.task-creation-submit{
+    background-color: initial;
+    border: 0.07em solid #e1e4e8;
+    border-radius: 0.6em;
+    padding: 0.3em 3em;
+    font-size: 1em;
+    //font-weight: bold;
+    cursor: pointer;
+}
+
+.task-creation-submit:hover{
+    border: 0.07em solid #cc800e;
+    color: #cc800e;
+}
+
+.task-creation-submit:focus{
+    outline: none;
+}
