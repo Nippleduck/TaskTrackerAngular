@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Task } from 'src/app/models/task';
-import { TaskManagementService } from '../../services/task-management-service/task-management.service';
 
 @Component({
   selector: 'app-test',
@@ -24,27 +23,22 @@ export class TestComponent implements OnInit {
 
     searchText: string;
 
-  constructor(private service: TaskManagementService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.getTasks();
+    
   }
 
   log(){console.log("hello");}
 
-  getTasks()
-  {
-    this.service.getTasks().subscribe
-    (
-      (result) => 
-      {
-        this.tasks = result;
-      },
-      err =>
-      {
-        console.log(err);
-      }
-    );
+  date =  new Date(7, 4, 2000);
+
+  test(){
+    let date = new Date(12, 11, 14);
+    let stringDate = date.toString();
+    let convertedDate = new Date(stringDate);
+
+    console.log(convertedDate);
   }
 
 }

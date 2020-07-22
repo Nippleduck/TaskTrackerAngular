@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import * as _ from 'lodash';
-import { DatePipe } from '@angular/common';
-import { TaskManagementService } from '../task-management-service/task-management.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskEditService {
 
-  constructor(private service: TaskManagementService) { }
+  constructor() { }
 
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),

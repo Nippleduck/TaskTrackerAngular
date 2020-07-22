@@ -2,13 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { MainPageComponent } from './main-page/main-page.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TestComponent } from './test/test.component';
 import { TaskElementComponent } from './task-element/task-element.component';
-import { AddTaskComponent } from './add-task/add-task.component';
 import { MaterialDesignModule } from '../material-design/material-design.module';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ProjectElementComponent } from './project-element/project-element.component';
@@ -20,13 +18,15 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { InvitationDialogComponent } from './popup-dialogs/invitation-dialog/invitation-dialog.component';
 import { CreateProjectDialogComponent } from './popup-dialogs/create-project-dialog/create-project-dialog.component';
 import { CreateTaskDialogComponent } from './popup-dialogs/create-task-dialog/create-task-dialog.component';
+import { AuthGuard } from '../authorization/auth.guard';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { PerformerPageComponent } from './performer-page/performer-page.component';
 
 const taskRoutes: Routes =
 [
-  {path: 'manager-page', component: ManagerViewComponent},
-  {path: 'add', component: AddTaskComponent},
-  {path: 'edit/:id', component: AddTaskComponent},
-  {path: 'test', component: TestComponent}
+  {path: 'manager-page', component: ManagerViewComponent, canActivate: [AuthGuard]},
+  {path: 'test', component: TestComponent, canActivate: [AuthGuard]}
 ];
 
 const managerPageComponents =
@@ -35,7 +35,14 @@ const managerPageComponents =
   TaskViewComponent,
   ProjectViewComponent,
   UserViewComponent
-]
+];
+
+const dialogs = 
+[
+  InvitationDialogComponent,
+  CreateProjectDialogComponent,
+  CreateTaskDialogComponent
+];  
 
 @NgModule({
   imports: [
@@ -48,22 +55,20 @@ const managerPageComponents =
     Ng2SearchPipeModule,
     RouterModule.forChild([
       ...taskRoutes
-    ]) 
+    ])
   ],
   declarations: [
-      MainPageComponent,
       TestComponent,
       TaskElementComponent,
-      AddTaskComponent,
       NavBarComponent,
       ProjectElementComponent,
+      LoadingSpinnerComponent,
       ...managerPageComponents,
-      InvitationDialogComponent,
-      CreateProjectDialogComponent,
-      CreateTaskDialogComponent
+      ...dialogs,
+      UserProfileComponent,
+      PerformerPageComponent
     ],
   exports: [
-      MainPageComponent,
       NavBarComponent
   ]
 })

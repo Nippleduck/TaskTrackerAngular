@@ -1,63 +1,55 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from '../../../../node_modules/rxjs';
 import { Task } from 'src/app/models/task';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { HttpClient, HttpResponse, HttpResponseBase} from "@angular/common/http";
+import { Observable, throwError, of } from 'rxjs';
+import { catchError, mergeMap, tap} from 'rxjs/operators';
+import { BaseService } from '../base-service';
+import { BaseResponse } from 'src/app/models/response-model/base-response';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TaskService {
+export class TaskService extends BaseService{
 
-  readonly BASE_URL = "http://localhost:5001";
+  constructor(private fb: FormBuilder, protected http: HttpClient) { super(http); }
 
-  constructor(private http: HttpClient) { }
+  formModel = this.fb.group({
+    Title: ['', Validators.required],
+    Description: [''],
+    Deadline: ['', Validators.required]
+  });
 
-  createTask(model:Task):Observable<any>
-  {
-    const url = `${this.BASE_URL}/task`;
 
-    return this.http.post(url, model);
-  }
+  createTask(): Observable<Task>{
 
-  updateTask(model: Task):Observable<any>
-  {
-    const url = `${this.BASE_URL}/task/${model.Id}`;
+    let url = this.BASE_URL + '/task/add';
 
-    return this.http.put(url, model);
-  }
+    var task: Task = {
+      id: 0,
+      title: this.formModel.value.Title,
+      description: this.formModel.value.Description !== null ? 
+        this.formModel.value.Description : "",
+      state: 0,
+      beginDate: Date.now().toString(),
+      deadline: new Date(this.formModel.value.Deadline).toString()
+    }
+    
+    return this.postRequest<Task>(url, task);
 
-  updateTaskProgress(model: Task):Observable<any>
-  {
-    const url = `${this.BASE_URL}/task/${model.Id}/progress`;
+    return this.http.post<BaseResponse<number>>(url, task)
+    .pipe(mergeMap((response: BaseResponse<number>) => {
+      if(response.success === true){
+        task.id = response.data;
+        return of(task);
+      } else console.log(<any>response);
+    }));
+  }  
 
-    return this.http.put(url, model);
-  }
+  getProjectTasks(projectId: number): Observable<Task[]>{
 
-  addPerformer(id: number, performerName: string):Observable<any>
-  {
-    const url = `${this.BASE_URL}/task/${id}/performers/${performerName}`;
+    let url = `${this.BASE_URL}/project/${projectId}/tasks`;
 
-    return this.http.post(url, null);
-  }
-
-  getPerformedTasks():Observable<Task[]>
-  {
-    const url = `${this.BASE_URL}/user/tasks/performed`;
-
-    return this.http.get<Task[]>(url);
-  }
-
-  getManagedTasks():Observable<Task[]>
-  {
-    const url = `${this.BASE_URL}/user/tasks/managed`;
-
-    return this.http.get<Task[]>(url);
-  }
-
-  delete(id: number):Observable<any>
-  {
-    const url = `${this.BASE_URL}/task/${id}`;
-
-    return this.http.delete(url);
+    return this.getRequest<Task[]>(url);
   }
 }

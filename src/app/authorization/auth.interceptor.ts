@@ -1,9 +1,11 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, from, throwError, BehaviorSubject } from "rxjs";
-import { tap, catchError, take, switchMap, filter } from "rxjs/operators";
+import { Observable, throwError, BehaviorSubject } from "rxjs";
+import { catchError, take, switchMap, filter } from "rxjs/operators";
 import { Router } from "@angular/router";
 import { AuthService} from './auth.service';
+import { Tokens } from '../models/token-models/tokens';
+import { BaseResponse } from '../models/response-model/base-response';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
@@ -41,10 +43,10 @@ export class AuthInterceptor implements HttpInterceptor {
           this.refreshTokenSubject.next(null);
     
           return this.authService.refreshToken().pipe(
-            switchMap((token: any) => {
+            switchMap((response: BaseResponse<Tokens>) => {
               this.isRefreshing = false;
-              this.refreshTokenSubject.next(token.jwt);
-              return next.handle(this.addToken(request, token.jwt));
+              this.refreshTokenSubject.next(response.data.accessToken.token);
+              return next.handle(this.addToken(request, response.data.accessToken.token));
             }));
     
         } else {

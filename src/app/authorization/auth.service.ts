@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, empty, of, from } from 'rxjs';
+import { Observable, empty, of, from, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders} from "@angular/common/http";
-import { mapTo, catchError, tap} from 'rxjs/operators';
+import { mapTo, catchError, tap, mergeMap } from 'rxjs/operators';
 import { Tokens } from '../models/token-models/tokens';
 import { TaskUser } from '../models/task-user';
+import { BaseResponse } from '../models/response-model/base-response';
 
 @Injectable({
   providedIn: 'root'
@@ -19,40 +20,49 @@ export class AuthService{
     constructor(private http: HttpClient){}
 
     login(user: { username: string, password: string }): Observable<boolean> {
-        return this.http.post<any>(`${this.BASE_URL}/auth/login`, user)
-          .pipe(
-            tap(tokens => this.doLoginUser(user.username, tokens)),
+      let url = `${this.BASE_URL}/auth/login`;  
+      
+      return this.http.post<BaseResponse<Tokens>>(url, user)
+          .pipe(tap((response: BaseResponse<Tokens>) =>
+           this.doLoginUser(user.username, response.data)),
             mapTo(true),
             catchError(error => {
-              alert(error.error);
+              throwError(error.error);
               return of(false);
-            }));
-            
+        }));      
       }
+      
+      logout(): Observable<boolean> {
+        let url = `${this.BASE_URL}/auth/logout`;
 
-      logout() {
-        return this.http.post<any>(`${this.BASE_URL}/logout`, {
-          'refreshToken': this.getRefreshToken()
-        }).pipe(
-          tap(() => {
+        let tokens = {
+          accessToken: this.getJwtToken(),
+          refreshToken: this.getRefreshToken()
+        };
+
+        return this.http.post<BaseResponse<string>>(url, tokens)
+        .pipe(mergeMap((response: BaseResponse<string>) => {
+          if(response.success === true){
             this.doLogoutUser();
-            //console.log(this.getJwtToken());
-          }),
-          mapTo(true),
-          catchError(error => {
-            alert(error.error);
+            return of(true);
+          } else if(response.success === false){
+            console.log(response.data);
             return of(false);
-          }));
+          }
+        }));
       }
 
       refreshToken() {
-        return this.http.post<any>(`${this.BASE_URL}/auth/refreshToken`, {
-          'accessToken': this.getJwtToken(),
-          'refreshToken': this.getRefreshToken()
-        }).pipe(tap((tokens: Tokens) => {
-          this.storeJwtToken(tokens.accessToken.token);
-          this.storeJwtToken(tokens.refreshToken);
-          this.storeJwtToken(tokens.accessToken.expiresIn.toString())
+        let url = `${this.BASE_URL}/auth/refreshToken`;
+
+        let tokens = {
+          accessToken: this.getJwtToken(),
+          refreshToken: this.getRefreshToken()
+        };
+
+        return this.http.post<BaseResponse<Tokens>>(url, tokens)
+        .pipe(tap((tokens: BaseResponse<Tokens>) => {
+          this.storeTokens(tokens.data);
         }));
       }
 

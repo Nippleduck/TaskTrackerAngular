@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
+import { BaseResponse } from 'src/app/models/response-model/base-response';
+import { mergeMap } from 'rxjs/operators';
+import { of, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,14 +36,24 @@ export class RegistrationService {
     }
   }
 
-  register() {
+  register(): Observable<boolean> {
     var body = {
       UserName: this.formModel.value.UserName,
       Email: this.formModel.value.Email,
       Password: this.formModel.value.Passwords.Password,
       Role: this.formModel.value.Role
     };
-    console.log(body.Role);
-    return this.http.post(this.BASE_URL + '/auth/register', body);
+    
+    let url = `${this.BASE_URL}/auth/register`;
+
+    return this.http.post<BaseResponse<string>>(url, body)
+    .pipe(mergeMap((response: BaseResponse<string>) => {
+      if(response.success === true){
+        return of(true);
+      } else if(response.success === false){
+        console.log(response.data);
+        return of(false);
+      }
+    }));
   }
 }

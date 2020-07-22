@@ -22,7 +22,9 @@
       </div>
       <div class="project-status">
         <div class="info-wrapper status-container">
-          <span class="status">Open</span>
+          <span (click)="test()" style="cursor: pointer;" class="status">{{date | date}}
+          <input type="date" [(ngModel)]="date">
+          </span>
         </div>
       </div>
       <div class="option-container">
@@ -44,7 +46,7 @@
           <input type="text" [(ngModel)]="searchText" placeholder="Start searching for a task by name">
         </div>
         <div class="task-button-wrapper">
-          <div (click)="log()" class=" task-container btn">
+          <div class=" task-container btn">
             <span style="opacity: 0.8;">New task</span>
           </div>
         </div>

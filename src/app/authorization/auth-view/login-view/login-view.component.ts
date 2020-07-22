@@ -3,7 +3,6 @@ import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth.service';
-import { IfStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-login-view',
@@ -28,25 +27,19 @@ export class LoginViewComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    //this.showSpinner = true;
-
-    this.router.navigateByUrl('/home');
     
-    /*
     this.authService.login(form.value).subscribe(
       success => {
         if(success){
-          this.router.navigateByUrl('/home');
+          this.router.navigateByUrl('/manager-page');//change
         }
       },
       error => {
         if(error.status == 400){
-          this.showSpinner = false;
           this.toastr.error('Incorrect username or password.', 'Authentication failed.');
         }
       }
     );
-    */
    
     /*
     this.service.login(form.value).subscribe(

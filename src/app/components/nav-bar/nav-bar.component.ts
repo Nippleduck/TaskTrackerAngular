@@ -1,6 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { from } from 'rxjs';
+import { AuthService } from '../../authorization/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,10 +12,14 @@ import { from } from 'rxjs';
 })
 export class NavBarComponent implements OnInit {
 
-  
-  constructor() {}
+  constructor(private service: AuthService, private router: Router) {}
 
   ngOnInit(): void {
   }
 
+  logout(){
+    this.service.logout().subscribe((canLogout: boolean) => {
+      if(canLogout === true) this.router.navigateByUrl('/auth/login');
+    })
+  }
 }

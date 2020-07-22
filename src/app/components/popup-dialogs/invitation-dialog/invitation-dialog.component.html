@@ -7,9 +7,9 @@
         <input type="text" class="user-input" [(ngModel)]="searchedPerson" placeholder="Type user name...">
     </div>
     <div class="invitation-user-list">
-        <div class="invitation-user" *ngFor="let name of names |filter: searchedPerson">
+        <div class="invitation-user" *ngFor="let user of users |filter: searchedPerson">
             <img src="../../../../assets/images/default-user.png" class="invitation-user-avatar">
-            <p class="invitation-username">{{name.name}}</p>
+            <p class="invitation-username">{{user.name}}</p>
             <img src="../../../../assets/images/plus.png" class="dialog-invite-button">
         </div>
     </div>    

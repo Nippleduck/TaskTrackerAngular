@@ -63,3 +63,60 @@
 .task-creation-submit:focus{
     outline: none;
 }
+
+//dropdown
+
+.details-overlay{
+    display: block;
+    margin-right: 0.3em;
+    position: relative!important;
+  }
+
+  .dropdown{
+    color: black;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: auto;
+    z-index: 100;
+    width: 160px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-top: 2px;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(149,157,165,.2);
+  }
+
+
+  .details-reset>summary::before{
+      display: none;
+  }
+
+  .details-reset>summary{
+    list-style: none;
+  }
+
+  .details-overlay[open]>summary::before {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 80;
+    display: block;
+    cursor: default;
+    content: " ";
+    background: transparent;
+}
+
+  details summary::-webkit-details-marker {
+    display:none;
+  }
+
+  details summary:focus{
+    outline: none;
+  }

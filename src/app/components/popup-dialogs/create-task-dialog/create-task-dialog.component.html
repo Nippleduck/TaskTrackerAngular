@@ -1,21 +1,31 @@
-<div class="task-creation-container">
-    <div class="task-creation-header">
-        <h3 class="task-creation-title">Add new task</h3>
-        <p class="task-creation-description">Add new task by providing needed information such as title, description, deadline etc. You can assign performer now or later on the Team panel.</p>
-    </div>
-    <div class="task-creation-form">
-        <div class="task-creation-input-container">
-            <h3 class="task-creation-input-header">Title:</h3>
-            <input type="text" class="task-creation-input" placeholder="Project title...">
+<form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
+    <div class="task-creation-container">
+        <div class="task-creation-header">
+            <h3 class="task-creation-title">Add new task</h3>
+            <p class="task-creation-description">Add new task by providing needed information such as title,
+                 description, deadline etc. You can assign performer now or later on the Team panel.</p>
         </div>
-        <div class="task-creation-input-container">
-            <h3 class="task-creation-input-header">Description:</h3>
-            <textarea type="text" class="task-creation-input" placeholder="Description..."></textarea>
-        </div>
-        <div style="text-align: center;" class="task-creation-input-container">
-            <button class="task-creation-submit">
-                <span style="opacity: 0.7;">Submit</span>
-            </button>
-        </div>
+        <div class="task-creation-form">
+            <div class="task-creation-input-container">
+                <h3 class="task-creation-input-header">Title:</h3>
+                <input formControlName="Title" type="text" class="task-creation-input" placeholder="Project title...">
+                <label style="font-size: 0.8em;" class="text-danger" *ngIf="service.formModel.get('Title').touched && service.formModel.get('Title').errors?.required">Title is required.</label>
+            </div>
+            <div class="task-creation-input-container">
+                <h3 class="task-creation-input-header">Description:</h3>
+                <textarea formControlName="Description" type="text" class="task-creation-input" placeholder="Description..."></textarea>
+                <label style="font-size: 0.8em;" class="text-danger" *ngIf="service.formModel.get('Description').touched && service.formModel.get('Description').errors?.required">Description is required.</label>
+            </div>
+            <div class="task-creation-input-container">
+                <h3 class="task-creation-input-header">Deadline:</h3>
+                <input formControlName="Deadline" type="date" class="task-creation-input">
+                <label style="font-size: 0.8em;" class="text-danger" *ngIf="service.formModel.get('Deadline').touched && service.formModel.get('Deadline').errors?.required">You must assign a deadline.</label>
+            </div>
+            <div style="text-align: center;" class="task-creation-input-container">
+                <button type="submit" class="task-creation-submit" [disabled]="!service.formModel.valid">
+                    <span style="opacity: 0.7;">Submit</span>
+                </button>
+            </div>
+        </div>   
     </div>    
-</div>
+</form>

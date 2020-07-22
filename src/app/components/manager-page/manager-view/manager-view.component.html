@@ -2,7 +2,7 @@
     <div class="grid-sidebar">
         <div class="sidebar-header">
             <h1 class="list-header">Projects
-                <span class="projects-count">{{strings.length}}</span>
+                <span *ngIf="projects.length" matTooltip="total amount of projects" class="projects-count">{{projects.length}}</span>
             </h1>
         </div>
         <div class="project-search-container">
@@ -10,23 +10,23 @@
             <img class="search-image" src="../../../../assets/images/search--v1.png">
         </div>
         <div class="projects-list">
-           <app-project-view *ngFor="let str of strings |filter: searchedProject" [project] = "str"></app-project-view>
+           <app-project-view (click)="onProjectSelect(project)" *ngFor="let project of projects |filter: searchedProject" [project] = "project"></app-project-view>
         </div>
         <div class="button-container">
             <details class="details-overlay details-overlay-dark details-reset">
                 <summary class="create-project">Create Project</summary>
                 <div class="details-dialog anim-fade-in fast Box Box--overlay">
-                    <app-create-project-dialog></app-create-project-dialog>
+                    <app-create-project-dialog (projectCreated)="onProjectCreated($event)"></app-create-project-dialog>
                 </div>
-                </details>
+            </details>
         </div>
     </div>
     <div class="grid-info">
         <div class="info-header">
-            <h2 class="info-title"> Task manager API</h2>
+            <h2 class="info-title">{{currentProject.title}}</h2>
         </div>
         <div class="description">
-            <p class="description-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia, dicta.</p>
+            <p class="description-text">{{currentProject.description}}</p>
         </div>
     </div>
     <div class="grid-main">
@@ -37,12 +37,12 @@
             <details class="details-overlay details-overlay-dark details-reset">
                 <summary class="create-task">New Task</summary>
                 <div class="details-dialog anim-fade-in fast Box Box--overlay">
-                    <app-create-task-dialog></app-create-task-dialog>
+                    <app-create-task-dialog (taskCreated)="onTaskCreated($event)"></app-create-task-dialog>
                 </div>
-                </details>
+            </details>
         </div>
         <div class="tasks-container">
-            <app-task-view *ngFor="let str of strings |filter: searchedTask" [task]="str"></app-task-view>
+            <app-task-view *ngFor="let project of projects |filter: searchedTask" [task]="project"></app-task-view>
         </div>    
     </div>
     <div class="grid-team">
@@ -52,16 +52,16 @@
                 <details class="details-overlay details-overlay-dark details-reset">
                     <summary class="invite-button">Invite</summary>
                     <div class="details-dialog anim-fade-in fast Box Box--overlay">
-                        <app-invitation-dialog></app-invitation-dialog>
+                        <app-invitation-dialog ></app-invitation-dialog>
                     </div>
-                    </details>
+                </details>
             </div>
         </div>
         <div class="manager-container">
             <app-user-view></app-user-view>
         </div>
         <div class="performers-list">
-            <app-user-view *ngFor="let str of strings"></app-user-view>
+            <app-user-view *ngFor="let project of projects"></app-user-view>
         </div>
     </div>
 </div>

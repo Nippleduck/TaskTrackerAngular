@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskUser } from 'src/app/models/task-user';
+import { TaskUserService } from 'src/app/services/task-user-service/task-user.service';
 
 @Component({
   selector: 'app-invitation-dialog',
@@ -7,26 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvitationDialogComponent implements OnInit {
 
-  searchedPerson;
+  searchedPerson: any;
 
-  names: any[] = [
-    {name:"Pablo"},
-     {name: "Silvia"},
-     {name: "Arnold"},
-      {name: "Patricia Madrero"},
-       {name: "Axcel D`Tolli"},
-        {name: "Mike Sanders"},
-        {name: "Mike Sanders"},
-        {name: "Mike Sanders"},
-        {name: "Mike Sanders"},
-        {name: "Mike Sanders"},
-        {name: "Mike Sanders"},
-        {name: "Mike Sanders"},
-        {name: "Mike Sanders"}
-  ]
-  constructor() { }
+  users: TaskUser[];
+
+  constructor(private userService: TaskUserService) { }
 
   ngOnInit(): void {
+    this.getUsers();
   }
 
+  getUsers(){
+    this.userService.getUsers().subscribe(
+      (result: TaskUser[]) => {
+        this.users = result;
+      }
+    )
+  }
 }

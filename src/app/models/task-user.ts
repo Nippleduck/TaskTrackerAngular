@@ -1,14 +1,14 @@
 export interface TaskUser
 {
-    Id: number;
-    Name: string;
-    FullName: string;
-    Info: string;
-    Country: string;
-    City: string;
-    Mail: string;
-    PhoneNumber: string;
-    Role: string;
-    Specialization: string;
-    AvatarPath: string;
+    id: number;
+    name: string;
+    fullName: string;
+    info: string;
+    country: string;
+    city: string;
+    email: string;
+    phoneNumber: string;
+    role: string;
+    position: string;
+    avatarPath: string;
 }

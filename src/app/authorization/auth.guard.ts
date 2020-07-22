@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ) : boolean {
-        if (!this.authService.isLoggedIn()) //remove "!" when unnecesary
+        if (this.authService.isLoggedIn()) //remove "!" when unnecesary
         return true;
 
         else{
